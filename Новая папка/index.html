@@ -1,0 +1,188 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример магазина</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #store-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product {
+            margin-bottom: 20px;
+        }
+
+        .cart {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+        }
+
+        .checkout-btn {
+            display: block;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="store-container">
+    <div class="product">
+        <h3>Продукт 1</h3>
+        <p>Цена: $10</p>
+        <button onclick="addToCart('Продукт 1', 10)">Добавить в корзину</button>
+    </div>
+
+    <div class="product">
+        <h3>Продукт 2</h3>
+        <p>Цена: $15</p>
+        <button onclick="addToCart('Продукт 2', 15)">Добавить в корзину</button>
+    </div>
+
+    <div id="cart" class="cart"></div>
+
+    <button onclick="checkout()" class="checkout-btn">Подтвердить заказ</button>
+</div>
+
+<script>
+    let cart = [];
+
+    function addToCart(productName, price) {
+        cart.push({ name: productName, price: price });
+        updateCart();
+    }
+
+    function updateCart() {
+        let cartElement = document.getElementById('cart');
+        cartElement.innerHTML = '<h3>Корзина</h3>';
+        let total = 0;
+
+        if (cart.length === 0) {
+            cartElement.innerHTML += '<p>Корзина пуста</p>';
+        } else {
+            cart.forEach(item => {
+                cartElement.innerHTML += `<p>${item.name} - $${item.price}</p>`;
+                total += item.price;
+            });
+        }
+
+        cartElement.innerHTML += `<p><strong>Итого: $${total}</strong></p>`;
+    }
+
+    function checkout() {
+        if (cart.length === 0) {
+            alert('Корзина пуста. Добавьте продукты перед оформлением заказа.');
+        } else {
+            let confirmationMessage = 'Ваш заказ:\n\n';
+            let total = 0;
+
+            cart.forEach(item => {
+                confirmationMessage += `${item.name} - $${item.price}\n`;
+                total += item.price;
+            });
+
+            confirmationMessage += `\nИтого: $${total}\n\nСпасибо за покупку!`;
+
+            alert(confirmationMessage);
+
+            // Опционально: добавьте здесь логику для обработки оплаты.
+            // Например, отправка данных на сервер для обработки платежа.
+            
+            // После успешной оплаты можно очистить корзину:
+            cart = [];
+            updateCart();
+        }
+    }
+</script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример магазина</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #store-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product {
+            margin-bottom: 20px;
+        }
+
+        .checkout-btn {
+            display: block;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="store-container">
+    <div class="product">
+        <h3>Продукт 1</h3>
+        <p>Цена: $10</p>
+        <button onclick="addToCart('Продукт 1', 10)">Добавить в корзину</button>
+    </div>
+
+    <div class="product">
+        <h3>Продукт 2</h3>
+        <p>Цена: $15</p>
+        <button onclick="addToCart('Продукт 2', 15)">Добавить в корзину</button>
+    </div>
+
+    <a href="cart.html" class="checkout-btn">Перейти в корзину</a>
+</div>
+
+<script>
+    let cart = [];
+
+    function addToCart(productName, price) {
+        cart.push({ name: productName, price: price });
+    }
+</script>
+
+</body>
+</html>

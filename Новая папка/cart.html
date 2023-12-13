@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #cart-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart {
+            margin-bottom: 20px;
+        }
+
+        .remove-btn {
+            display: block;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #ff3333;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="cart-container">
+    <h3>Корзина</h3>
+    <div id="cart" class="cart"></div>
+
+    <a href="#" onclick="removeOrder()" class="remove-btn">Убрать заказ</a>
+</div>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function updateCart() {
+        let cartElement = document.getElementById('cart');
+        cartElement.innerHTML = '';
+
+        let total = 0;
+
+        if (cart.length === 0) {
+            cartElement.innerHTML += '<p>Корзина пуста</p>';
+        } else {
+            cart.forEach(item => {
+                cartElement.innerHTML += `<p>${item.name} - $${item.price}</p>`;
+                total += item.price;
+            });
+        }
+
+        cartElement.innerHTML += `<p><strong>Итого: $${total}</strong></p>`;
+    }
+
+    function removeOrder() {
+        localStorage.removeItem('cart');
+        cart = [];
+        updateCart();
+    }
+
+    updateCart();
+</script>
+
+</body>
+</html>
